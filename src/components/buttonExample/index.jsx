@@ -5,7 +5,7 @@ export const ButtonExample = ({children, text, onClick}) => {
 console.log(styles);
 
     return <button 
-                class={styles.wrapper}
+                className={styles.wrapper}
                 onClick={onClick}
             >
                 {children}
