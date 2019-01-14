@@ -1,8 +1,14 @@
 import { configure } from '@storybook/react';
 
-function loadStories(params) {
-    
-    require('../stories/index.js');
+const excludedList = [];
+
+const req = require.context('../stories', true, /.stories.(js|jsx)$/);
+
+function loadStories() {
+
+    req.keys()
+        .filter(story => excludedList.includes(story) == false)
+        .forEach(filename => req(filename));
 }
 
 configure(loadStories, module);
